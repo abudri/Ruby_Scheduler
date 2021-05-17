@@ -11,7 +11,7 @@ def sort_schedules(meetings)
 end
 
 def evaluate_schedules(meetings)
-  full_day = 8.0 # float required to account for 0.5 hour meetings
+  full_day = 8.0 # float to account for 0.5 hour meetings
   total_time = 0 # accumulator for meeting and space between meetings
   offsite_meetings = 0
   onsite_meetings = 0
@@ -30,7 +30,7 @@ def evaluate_schedules(meetings)
     total_time += 0.5 if offsite_meetings > 1
   end
 
-  puts total_time <= full_day  # implicit return on the final check
+  puts total_time <= full_day  # output to terminal the implicit return on the final check
 end
 
 # run program 
