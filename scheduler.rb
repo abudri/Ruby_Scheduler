@@ -21,7 +21,7 @@ def evaluate_schedules(meetings)
     total_time += hsh[:duration]
     onsite_meetings += 1
   end
-  # if we have onsite meetings, add 0.5 travel time from :onsite to first :offsite
+  # if we have :offsite meetings, add 0.5 travel time from :onsite to first :offsite
   total_time += 0.5 if meetings.any? { |meeting| meeting.has_value?(:offsite)}
   # add up meeting times for :offsite
   meetings.select { |meeting| meeting[:duration] if meeting[:type] == :offsite }.each do |hsh|
