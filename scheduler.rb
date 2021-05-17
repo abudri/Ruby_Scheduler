@@ -1,8 +1,8 @@
 
-meetings = [{ name: "Meeting 1", duration: 3, type: :onsite}, 
-            { name: "Meeting 2", duration: 2, type: :offsite}, 
-            { name: "Meeting 3", duration: 1, type: :offsite}, 
-            { name: "Meeting 4", duration: 0.5, type: :onsite}
+meetings = [{ name: "Meeting 1", duration: 0.5, type: :offsite}, 
+            { name: "Meeting 2", duration: 0.5, type: :onsite}, 
+            { name: "Meeting 3", duration: 2.5, type: :onsite}, 
+            { name: "Meeting 4", duration: 3, type: :onsite}
             ]
 
 # visual aid for input of meetings, grouping by :onsite and :offsite in that order
@@ -11,7 +11,7 @@ def sort_schedules(meetings)
 end
 
 def evaluate_schedules(meetings)
-  full_day = 8
+  full_day = 8.0 # float required to account for 0.5 hour meetings
   total_time = 0 # accumulator for meeting and space between meetings
   offsite_meetings = 0
   onsite_meetings = 0
@@ -30,8 +30,8 @@ def evaluate_schedules(meetings)
     total_time += 0.5 if offsite_meetings > 1
   end
 
-  total_time > full_day  # implicit return on the final check
+  puts total_time <= full_day  # implicit return on the final check
 end
 
 # run program 
-sort_schedules(meetings)
+evaluate_schedules(meetings)
